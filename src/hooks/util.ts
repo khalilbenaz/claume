@@ -21,7 +21,9 @@ export async function readHookInput(): Promise<HookInput> {
 }
 
 export function projectKey(cwd: string | undefined): string {
-  return cwd ?? process.cwd();
+  const path = cwd ?? process.cwd();
+  const parts = path.split("/").filter(Boolean);
+  return parts[parts.length - 1] ?? path;
 }
 
 export function readTranscript(path: string): string {
