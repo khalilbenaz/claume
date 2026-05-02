@@ -1,0 +1,27 @@
+{
+  "name": "claude-mem2",
+  "version": "0.1.0",
+  "description": "Persistent semantic memory for Claude Code — hybrid search, entity graph, smart compression",
+  "type": "module",
+  "bin": {
+    "claude-mem2": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "mcp": "node dist/mcp/server.js",
+    "hook:session-start": "node dist/hooks/session-start.js",
+    "hook:stop": "node dist/hooks/stop.js",
+    "hook:pre-compact": "node dist/hooks/pre-compact.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "better-sqlite3": "^11.7.0",
+    "sqlite-vec": "^0.1.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  }
+}
