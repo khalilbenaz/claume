@@ -1,7 +1,7 @@
 import Database from "better-sqlite3";
 import * as sqliteVec from "sqlite-vec";
 
-export const EMBED_DIM = 512;
+export const EMBED_DIM = 384;
 
 export function openDb(path: string): Database.Database {
   const db = new Database(path);
@@ -9,7 +9,16 @@ export function openDb(path: string): Database.Database {
   db.pragma("foreign_keys = ON");
   sqliteVec.load(db);
   migrate(db);
+  reconcileVecDim(db);
   return db;
+}
+
+function reconcileVecDim(db: Database.Database): void {
+  const row = db.prepare(`SELECT sql FROM sqlite_master WHERE name='observations_vec'`).get() as { sql?: string } | undefined;
+  if (row?.sql && !row.sql.includes(`FLOAT[${EMBED_DIM}]`)) {
+    db.exec(`DROP TABLE observations_vec;`);
+    db.exec(`CREATE VIRTUAL TABLE observations_vec USING vec0(observation_id INTEGER PRIMARY KEY, embedding FLOAT[${EMBED_DIM}]);`);
+  }
 }
 
 function migrate(db: Database.Database): void {

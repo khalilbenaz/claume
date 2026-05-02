@@ -81,7 +81,7 @@ async function vecSearch(q: string, limit: number, opts: SearchOptions): Promise
   const emb = await embedOne(q);
   if (!emb) return [];
   const where: string[] = [];
-  const params: unknown[] = [Buffer.from(emb.buffer), limit * 3];
+  const params: unknown[] = [Buffer.from(emb.buffer, emb.byteOffset, emb.byteLength), limit * 3];
   if (opts.project) { where.push("o.project = ?"); params.push(opts.project); }
   if (opts.kinds?.length) { where.push(`o.kind IN (${opts.kinds.map(() => "?").join(",")})`); params.push(...opts.kinds); }
   if (opts.since) { where.push("o.created_at >= ?"); params.push(opts.since); }

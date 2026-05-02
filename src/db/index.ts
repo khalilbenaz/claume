@@ -32,8 +32,9 @@ export function insertObservation(o: Observation, embedding?: Float32Array): num
   const info = stmt.run({ importance: 3, ...o });
   const id = Number(info.lastInsertRowid);
   if (embedding) {
+    const buf = Buffer.from(embedding.buffer, embedding.byteOffset, embedding.byteLength);
     db().prepare(`INSERT INTO observations_vec(observation_id, embedding) VALUES (?, ?)`)
-      .run(id, Buffer.from(embedding.buffer));
+      .run(BigInt(id), buf);
   }
   return id;
 }

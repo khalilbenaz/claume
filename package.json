@@ -15,6 +15,7 @@
     "hook:pre-compact": "node dist/hooks/pre-compact.js"
   },
   "dependencies": {
+    "@huggingface/transformers": "^4.2.0",
     "@modelcontextprotocol/sdk": "^1.0.4",
     "better-sqlite3": "^11.7.0",
     "sqlite-vec": "^0.1.6"

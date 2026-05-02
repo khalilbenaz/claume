@@ -83,15 +83,20 @@ Wire it into Claude Code by adding to `~/.claude/settings.json`:
 
 claume now starts with every Claude Code session.
 
-### Optional — semantic embeddings
+### Embeddings
 
-Without an API key, claume falls back to BM25-only (still very useful). For full hybrid search:
+By default claume runs **fully local**: `Xenova/multilingual-e5-small` (384 dims, multilingual, ~120 MB downloaded once on first use) via [`@huggingface/transformers`](https://huggingface.co/docs/transformers.js). No API key, no network after the initial model download.
+
+First embed: ~20s (model load). Subsequent embeds: ~5 ms each.
+
+To use Voyage AI instead (hosted, slightly stronger on code retrieval):
 
 ```bash
-export VOYAGE_API_KEY=...   # https://www.voyageai.com/
+export CLAUME_EMBED_BACKEND=voyage
+export VOYAGE_API_KEY=...   # or store under "voyage-api-key" in macOS keychain
 ```
 
-Uses `voyage-3-lite` at 512 dimensions (cheap, excellent on code + multilingual).
+Available backends: `local` (default), `voyage`, `auto` (Voyage if key present, else local).
 
 ## CLI
 
