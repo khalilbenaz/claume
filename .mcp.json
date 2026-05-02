@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "claude-mem2": {
+    "claume": {
       "command": "node",
       "args": ["${CLAUDE_PLUGIN_ROOT}/dist/mcp/server.js"]
     }

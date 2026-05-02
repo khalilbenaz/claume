@@ -94,7 +94,7 @@ async function vecSearch(q: string, limit: number, opts: SearchOptions): Promise
   try {
     return (db().prepare(sql).all(...params) as { id: number }[]).map((r) => r.id);
   } catch (e) {
-    process.stderr.write(`[claude-mem2] vec search err: ${(e as Error).message}\n`);
+    process.stderr.write(`[claume] vec search err: ${(e as Error).message}\n`);
     return [];
   }
 }

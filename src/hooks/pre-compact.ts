@@ -51,6 +51,6 @@ async function main() {
 }
 
 main().catch((e) => {
-  process.stderr.write(`[claude-mem2 pre-compact] ${(e as Error).message}\n`);
+  process.stderr.write(`[claume pre-compact] ${(e as Error).message}\n`);
   process.stdout.write(JSON.stringify({ continue: true, suppressOutput: true }));
 });

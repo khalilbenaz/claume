@@ -21,7 +21,7 @@ async function main() {
     return `- #${o.id} [${date}] ${o.kind}: ${o.title} — ${o.body}`;
   });
 
-  const ctx = `# claude-mem2 — recent context for ${project}\n\n${lines.join("\n")}\n\nUse the \`search\` MCP tool for semantic recall across all projects.`;
+  const ctx = `# claume — recent context for ${project}\n\n${lines.join("\n")}\n\nUse the \`search\` MCP tool for semantic recall across all projects.`;
 
   process.stdout.write(JSON.stringify({
     continue: true,
@@ -34,6 +34,6 @@ async function main() {
 }
 
 main().catch((e) => {
-  process.stderr.write(`[claude-mem2 session-start] ${(e as Error).message}\n`);
+  process.stderr.write(`[claume session-start] ${(e as Error).message}\n`);
   process.stdout.write(JSON.stringify({ continue: true, suppressOutput: true }));
 });

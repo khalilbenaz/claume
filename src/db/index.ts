@@ -7,7 +7,7 @@ let _db: ReturnType<typeof openDb> | null = null;
 
 export function db() {
   if (_db) return _db;
-  const dir = join(homedir(), ".claude-mem2");
+  const dir = join(homedir(), ".claume");
   mkdirSync(dir, { recursive: true });
   _db = openDb(join(dir, "memory.db"));
   return _db;

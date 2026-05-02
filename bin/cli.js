@@ -28,5 +28,5 @@ switch (cmd) {
     break;
   }
   default:
-    console.log("Usage: claude-mem2 <search|recent|stats> [args]");
+    console.log("Usage: claume <search|recent|stats> [args]");
 }

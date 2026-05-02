@@ -46,11 +46,11 @@ async function main() {
   });
 
   endSession(input.session_id, `${observations.length} observations captured`);
-  process.stderr.write(`[claude-mem2] captured ${observations.length} obs for ${project}\n`);
+  process.stderr.write(`[claume] captured ${observations.length} obs for ${project}\n`);
   process.stdout.write(JSON.stringify({ continue: true, suppressOutput: true }));
 }
 
 main().catch((e) => {
-  process.stderr.write(`[claude-mem2 stop] ${(e as Error).message}\n`);
+  process.stderr.write(`[claume stop] ${(e as Error).message}\n`);
   process.stdout.write(JSON.stringify({ continue: true, suppressOutput: true }));
 });

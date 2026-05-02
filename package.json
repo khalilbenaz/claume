@@ -1,10 +1,10 @@
 {
-  "name": "claude-mem2",
+  "name": "claume",
   "version": "0.1.0",
   "description": "Persistent semantic memory for Claude Code — hybrid search, entity graph, smart compression",
   "type": "module",
   "bin": {
-    "claude-mem2": "./bin/cli.js"
+    "claume": "./bin/cli.js"
   },
   "scripts": {
     "build": "tsc",

@@ -1,5 +1,5 @@
 {
-  "name": "claude-mem2",
+  "name": "claume",
   "version": "0.1.0",
   "description": "Persistent semantic memory: hybrid BM25+vector search, entity graph, smart compression"
 }

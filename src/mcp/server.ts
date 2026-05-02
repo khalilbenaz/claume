@@ -5,7 +5,7 @@ import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprot
 import { search, recentByProject, neighborsOf } from "../search/search.js";
 import { db } from "../db/index.js";
 
-const server = new Server({ name: "claude-mem2", version: "0.1.0" }, { capabilities: { tools: {} } });
+const server = new Server({ name: "claume", version: "0.1.0" }, { capabilities: { tools: {} } });
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
@@ -124,4 +124,4 @@ function formatHits(hits: SimpleHit[]): string {
 }
 
 await server.connect(new StdioServerTransport());
-process.stderr.write("[claude-mem2] MCP server ready\n");
+process.stderr.write("[claume] MCP server ready\n");

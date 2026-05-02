@@ -1,7 +1,7 @@
 import { EMBED_DIM } from "../db/schema.js";
 
 const VOYAGE_URL = "https://api.voyageai.com/v1/embeddings";
-const MODEL = process.env.CLAUDE_MEM2_EMBED_MODEL ?? "voyage-3-lite";
+const MODEL = process.env.CLAUME_EMBED_MODEL ?? "voyage-3-lite";
 
 export async function embed(texts: string[]): Promise<Float32Array[] | null> {
   const key = process.env.VOYAGE_API_KEY;
@@ -12,7 +12,7 @@ export async function embed(texts: string[]): Promise<Float32Array[] | null> {
     body: JSON.stringify({ input: texts, model: MODEL, output_dimension: EMBED_DIM, output_dtype: "float" }),
   });
   if (!res.ok) {
-    process.stderr.write(`[claude-mem2] voyage embed failed: ${res.status} ${await res.text()}\n`);
+    process.stderr.write(`[claume] voyage embed failed: ${res.status} ${await res.text()}\n`);
     return null;
   }
   const data = (await res.json()) as { data: { embedding: number[] }[] };
