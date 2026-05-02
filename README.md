@@ -101,8 +101,8 @@ Available backends: `local` (default), `voyage`, `auto` (Voyage if key present, 
 ## CLI
 
 ```bash
-node bin/cli.js search "PRD CNSS PAYSMART"
-node bin/cli.js recent budget-app
+node bin/cli.js search "rate limiting middleware"
+node bin/cli.js recent my-app
 node bin/cli.js stats
 ```
 
